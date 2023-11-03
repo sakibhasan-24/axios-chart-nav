@@ -1,0 +1,36 @@
+import React, { useState } from "react";
+import NavItems from "./NavItems";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+// import { IoMdClose } from "react-icons/io";
+export default function Navbar() {
+  const routes = [
+    { name: "Home", path: "/", id: 1 },
+    { name: "About Us", path: "/about", id: 2 },
+    { name: "Services", path: "/services", id: 3 },
+    { name: "Contact Us", path: "/contact", id: 4 },
+  ];
+  const [open, setOpen] = useState(true);
+  return (
+    <header>
+      <div className="md:hidden lg:hidden" onClick={() => setOpen(!open)}>
+        {open === true ? (
+          <AiOutlineMenu></AiOutlineMenu>
+        ) : (
+          <AiOutlineClose></AiOutlineClose>
+        )}
+      </div>
+
+      <nav
+        className={`bg-purple-500 absolute duration-1000 w-3/4   ${
+          open ? "top-8" : " -top-72"
+        }   m-3 p-1 rounded-lg`}
+      >
+        <ul className=" md:flex  gap-2 flex-col md:flex-row lg-flex-row   ">
+          {routes.map((item) => (
+            <NavItems key={item.id} item={item} />
+          ))}
+        </ul>
+      </nav>
+    </header>
+  );
+}
