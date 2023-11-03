@@ -9,21 +9,21 @@ export default function Navbar() {
     { name: "Services", path: "/services", id: 3 },
     { name: "Contact Us", path: "/contact", id: 4 },
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <header>
       <div className="md:hidden lg:hidden" onClick={() => setOpen(!open)}>
         {open === true ? (
-          <AiOutlineMenu></AiOutlineMenu>
-        ) : (
           <AiOutlineClose></AiOutlineClose>
+        ) : (
+          <AiOutlineMenu></AiOutlineMenu>
         )}
       </div>
 
       <nav
-        className={`bg-purple-500 absolute duration-1000 w-3/4   ${
+        className={`bg-purple-500 absolute md:static duration-1000 w-4/5  mx-20    ${
           open ? "top-8" : " -top-72"
-        }   m-3 p-1 rounded-lg`}
+        }     rounded-lg`}
       >
         <ul className=" md:flex  gap-2 flex-col md:flex-row lg-flex-row   ">
           {routes.map((item) => (
